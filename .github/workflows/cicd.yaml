@@ -68,6 +68,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
+        fetch-depth: 0
         token: ${{ secrets.TOKEN }}
 
     - name: Update tag in Helm chart
@@ -76,9 +77,12 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git config --global user.email "abhishek@gmail.com"
-        git config --global user.name "Abhishek Veeramalla"
+        git config --global user.email "mohinimore545@gmail.com"
+        git config --global user.name "Mohini More"
+        
+        git pull --rebase origin main
+        
         git add helm/go-web-app-chart/values.yaml
         git commit -m "Update tag in Helm chart"
-        git push
+        git push origin main
 
