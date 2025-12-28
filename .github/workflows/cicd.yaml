@@ -71,9 +71,7 @@ jobs:
         fetch-depth: 0
         token: ${{ secrets.TOKEN }}
 
-    - name: Update tag in Helm chart
-      run: |
-        sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/go-web-app-chart/values.yaml
+    
 
     - name: Commit and push changes
       run: |
@@ -81,6 +79,7 @@ jobs:
         git config --global user.name "Mohini More"
         
         git pull --rebase origin main
+        sed -i 's/tag: .*/tag: "${{github.run_id}}"/' helm/go-web-app-chart/values.yaml
         
         git add helm/go-web-app-chart/values.yaml
         git commit -m "Update tag in Helm chart"
