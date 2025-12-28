@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: go-web-app
-        image: mohinimore545/go-app:{{ .Values.image.tag }}
+        image: mohinimore546/go-app:{{ .Values.image.tag }}
         ports:
         - containerPort: 8080
